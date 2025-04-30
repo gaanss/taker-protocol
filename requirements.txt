@@ -1,0 +1,8 @@
+# Project dependencies
+curl-cffi==0.9.0b2
+eth-account>=0.9.0
+tweepy-self
+APScheduler>=3.9.1
+loguru>=0.7.0
+rich
+pyyaml

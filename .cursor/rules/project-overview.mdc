@@ -1,0 +1,18 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Taker Protocol Light Mining Bot
+
+This project automates registration, Twitter binding, and periodic mining tasks for Taker Light Mining.
+
+## Key Components
+- [main.py](mdc:main.py) - Main entry point with interactive CLI menu
+- [config.py](mdc:config.py) - Core configuration settings
+- [settings.yaml](mdc:settings.yaml) - User-configurable overrides
+- [utils/](mdc:utils/) - Helper modules and utilities
+- [tasks/](mdc:tasks/) - Task-specific implementation modules
+- `data/` - Input files directory (private keys, proxies, etc.)
+- `results/` - Output files directory for task results
+- [taker.db](mdc:taker.db) - SQLite database for account data storage

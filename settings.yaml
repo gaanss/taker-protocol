@@ -1,0 +1,5 @@
+# Delay in seconds before starting each account's
+start_delay_sec: [15, 30]
+
+# Maximum number of concurrent operations for tasks (e.g., registration, Twitter binding)
+concurrency: 1 

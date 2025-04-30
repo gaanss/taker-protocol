@@ -1,0 +1,45 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Usage Guide
+
+## Setup
+1. Create and activate virtual environment:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate      # on Windows
+   source venv/bin/activate   # on Linux/macOS
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Prepare input files in `data/` folder:
+   - `data/private_key.txt`: Ethereum private keys (one per line)
+   - `data/proxy.txt`: Proxies in `user:pass@ip:port` format (one per line)
+   - `data/twitter_token.txt`: Twitter auth tokens (one per line)
+   - `data/invite.txt`: Invitation codes (one per line)
+
+## Running the CLI
+Execute [main.py](mdc:main.py) to access the interactive menu:
+```bash
+python main.py
+```
+
+### Menu Options
+1. Registration - Register Ethereum wallets (using private keys and invite codes)
+2. Twitter Binding - Connect Twitter accounts to registered wallets
+3. Mining Scheduler - Start the automated mining job scheduler
+4. Exit - Exit the program
+
+### Configuration
+- Edit core settings in [config.py](mdc:config.py)
+- Override settings using [settings.yaml](mdc:settings.yaml):
+  ```yaml
+  start_delay_sec: 10    # Delay between operations
+  concurrency: 3         # Max concurrent mining jobs
+  ```
