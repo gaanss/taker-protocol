@@ -10,6 +10,8 @@
 
 > **Note:** This is free software.
 
+![Interface](interface.png)
+
 This project automates registration, Twitter binding, and periodic mining tasks for Taker Light Mining.
 
 ## Requirements 📋
