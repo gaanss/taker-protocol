@@ -12,6 +12,11 @@
 
 This project automates registration, Twitter binding, and periodic mining tasks for Taker Light Mining.
 
+## Requirements 📋
+
+- Python 3.11+ 🐍
+- Windows or Linux operating system
+
 ## Setup
 
 1. Create and activate a virtual environment:
