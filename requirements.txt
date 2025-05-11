@@ -6,3 +6,5 @@ APScheduler>=3.9.1
 loguru>=0.7.0
 rich
 pyyaml
+aiosqlite
+web3
