@@ -1,23 +1,6 @@
-# Taker Protocol Bot
-<p align="center">
-  <a href="https://t.me/gans_software">
-    <img src="https://img.shields.io/badge/Telegram-Channel-blue?style=for-the-badge&logo=telegram" alt="Telegram Channel">
-  </a>
-  <a href="https://t.me/ganssoftwarechat">
-    <img src="https://img.shields.io/badge/Telegram-Chat-blue?style=for-the-badge&logo=telegram" alt="Telegram Chat">
-  </a>
-</p>
-
-> **Note:** This is free software.
-
-![Interface](interface.png)
+# Taker Protocol Light Mining Bot
 
 This project automates registration, Twitter binding, and periodic mining tasks for Taker Light Mining.
-
-## Requirements 📋
-
-- Python 3.11+ 🐍
-- Windows or Linux operating system
 
 ## Setup
 
@@ -58,11 +41,11 @@ Instead of running individual task scripts, use the main menu:
 ```bash
 python main.py
 ```
-This presents options for Registration, Twitter Binding, Mining Scheduler, and Exit.
+This presents options for Registration, Twitter Binding, Farming Mode, Task Mode, and Exit.
 
 ### Registration Task
 ```bash
-python main.py        # choose "1) Registration"
+python main.py        # choose "Registration"
 ```
 - Reads `private_key.txt` and `invite.txt` (one invitation code per line).
 - Sleeps `start_delay_sec` seconds between accounts.
@@ -71,7 +54,7 @@ python main.py        # choose "1) Registration"
 
 ### Twitter Binding Task
 ```bash
-python main.py        # choose "2) Twitter Binding"
+python main.py        # choose "Twitter Binding"
 ```
 - Reads `private_key.txt` and selects DB entries with valid JWT.
 - Filters out tokens listed in `results/used_tokens.txt`, then iterates through remaining tokens, removing bad ones on the fly.
@@ -79,22 +62,24 @@ python main.py        # choose "2) Twitter Binding"
 - Skips already-linked accounts by checking `twId` via API.
 - On success writes to `results/twitter_success.txt` and appends the token to `results/used_tokens.txt`.
 
-### Mining Scheduler
+### Farming Mode
 ```bash
-python main.py        # choose "3) Mining Scheduler"
+python main.py        # choose "Farming Mode"
 ```
-- Runs asynchronous mining jobs on a random 25–27h interval per account, staggered by `start_delay_sec`.
-- Concurrency controlled by `concurrency` in `settings.yaml`.
-- Press `Ctrl+C` to gracefully stop the scheduler.
+- Loads `data/private_key.txt` and optional `data/proxy.txt`, shuffles account order each cycle.
+- For each account: derive address, generate nonce, login, on-chain activation if needed, start mining.
+- Logs progress `Progress: X/Y accounts processed` after each account.
+- Sleeps 12 hours between cycles.
+- Press `Ctrl+C` to gracefully stop.
 
-## Configurations
-
-All key constants (file paths, endpoints, intervals) are in `config.py`.
-
-## Coding Style
-
-- Follows PEP 8 guidelines.
-- Uses modular code in `utils/` and `tasks/`.
+### Task Mode
+```bash
+python main.py        # choose "Task Mode"
+```
+- Loads `data/private_key.txt` and optional `data/proxy.txt`.
+- For each account: derive address, generate nonce, login, fetch assignment list, complete any pending assignments.
+- Logs `Processing tasks for ADDRESS (X/Y)` and `Completed tasks for ADDRESS (X/Y)` progress for each account.
+- Exits when all accounts are processed or on `Ctrl+C`.
 
 ## License
 
