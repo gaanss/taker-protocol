@@ -8,3 +8,5 @@ rich
 pyyaml
 aiosqlite
 web3
+pytz
+aiohttp_socks
